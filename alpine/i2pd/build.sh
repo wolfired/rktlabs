@@ -16,7 +16,7 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 # Start the build with an empty ACI
-acbuild --debug begin ./alpine_latest.aci
+acbuild --debug begin ./alpine-latest.aci
 
 # In the event of the script exiting, end the build
 trap "{ export EXT=$?; acbuild --debug end && exit $EXT; }" EXIT
@@ -60,9 +60,11 @@ acbuild --debug mount add i2pd-data $DATA_DIR
 acbuild --debug copy ./main.sh $I2PD_HOME/bin/main.sh
 acbuild --debug run -- chmod a+x $I2PD_HOME/bin/main.sh
 
+acbuild --debug set-user $USER_NAME
+
 acbuild --debug environment add I2PD_HOME $I2PD_HOME
 acbuild --debug environment add DATA_DIR $DATA_DIR
 acbuild --debug set-exec -- $I2PD_HOME/bin/main.sh
 
 # Save the ACI
-acbuild --debug write --overwrite alpine_i2pd.aci
+acbuild --debug write --overwrite alpine-i2pd.aci
