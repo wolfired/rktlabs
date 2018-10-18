@@ -55,7 +55,7 @@ libtool g++ gcc pkgconfig
 
 acbuild --debug run -- apk --no-cache add boost-filesystem boost-system boost-program_options boost-date_time boost-thread boost-iostreams openssl musl-utils libstdc++
 
-acbuild --debug mount add i2pd-data $DATA_DIR
+acbuild --debug mount add data $DATA_DIR
 
 acbuild --debug copy ./main.sh $I2PD_HOME/bin/main.sh
 acbuild --debug run -- chmod a+x $I2PD_HOME/bin/main.sh
