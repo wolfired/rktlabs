@@ -1,6 +1,6 @@
 #!/bin/sh
 set -e
 
-ln -s $HOME_DIR/certificates $DATA_DIR/certificates
+ln -s $DIR_HOME/certificates $DIR_DATA/certificates
 
-$HOME_DIR/bin/i2pd --datadir $DATA_DIR  --conf $DATA_DIR/i2pd.conf
+$DIR_BIN/i2pd --datadir $DIR_DATA --conf $DIR_DATA/i2pd.conf
