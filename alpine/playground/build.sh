@@ -26,7 +26,8 @@ acbuild --debug set-name $APP_ID/$APP_NAME
 
 #
 acbuild --debug run -- mkdir -p $DIR_BIN $DIR_DATA
-acbuild --debug run -- adduser -S -h $DIR_HOME $APP_USER
+acbuild --debug run -- addgroup -S $APP_USER
+acbuild --debug run -- adduser -S -h $DIR_HOME -G $APP_USER $APP_USER
 acbuild --debug run -- chown -R $APP_USER:$APP_USER $DIR_HOME
 
 #
