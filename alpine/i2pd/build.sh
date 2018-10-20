@@ -54,7 +54,7 @@ acbuild --debug run --working-dir=/build/$REPO_NAME -- mv i2pd $DIR_BIN
 acbuild --debug run -- strip $DIR_BIN/i2pd
 acbuild --debug run -- rm -rf /build
 
-acbuild --debug run -- apk --no-cache --purge build-dependendencies del build-base fortify-headers boost-dev zlib-dev openssl-dev \
+acbuild --debug run -- apk --no-cache --purge del build-dependendencies build-base fortify-headers boost-dev zlib-dev openssl-dev \
 boost-python3 python3 gdbm boost-unit_test_framework boost-python linux-headers boost-prg_exec_monitor \
 boost-serialization boost-signals boost-wave boost-wserialization boost-math boost-graph boost-regex git pcre \
 libtool g++ gcc pkgconfig
