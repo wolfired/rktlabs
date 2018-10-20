@@ -11,7 +11,7 @@ APP_ID=${APP_ID:-"wolfired.com"}
 APP_NAME=`pwd`
 APP_NAME=${APP_NAME##*/}
 
-APP_USER=${APP_USER:-"i2pd"}
+APP_USER=${APP_USER:-"rktlabs"}
 DIR_HOME=${DIR_HOME:-"/home/$APP_USER"}
 DIR_BIN=${DIR_BIN:-"$DIR_HOME/bin"}
 DIR_DATA=${DIR_DATA:-"$DIR_HOME/data"}
