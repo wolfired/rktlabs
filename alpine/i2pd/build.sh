@@ -22,7 +22,7 @@ GIT_BRANCH=${GIT_BRANCH:-"openssl"}
 GIT_TAG=${GIT_TAG:-""}
 
 # Start the build with an empty ACI
-acbuild --debug begin ../alpine-latest.aci
+acbuild --debug begin ../base.aci
 
 # In the event of the script exiting, end the build
 trap "{ export EXT=$?; acbuild --debug end && exit $EXT; }" EXIT

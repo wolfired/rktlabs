@@ -16,7 +16,7 @@ DIR_BIN=${DIR_BIN:-"$DIR_HOME/bin"}
 DIR_DATA=${DIR_DATA:-"$DIR_HOME/data"}
 
 # Start the build with an empty ACI
-acbuild --debug begin ../alpine-latest.aci
+acbuild --debug begin ../base.aci
 
 # In the event of the script exiting, end the build
 trap "{ export EXT=$?; acbuild --debug end && exit $EXT; }" EXIT
