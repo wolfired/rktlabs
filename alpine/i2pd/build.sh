@@ -2,7 +2,7 @@
 set -e
 
 # 检查root权限
-if [ "$EUID" -ne 0 ]; then
+if [ "`id -u`" -ne 0 ]; then
     echo "This script uses functionality which requires root privileges"
     exit 1
 fi
