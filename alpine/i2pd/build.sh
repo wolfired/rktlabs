@@ -44,7 +44,7 @@ acbuild --debug run -- chown -R $APP_USER:$APP_GROUP $APP_USER_HOME
 # 更新系统
 acbuild --debug run -- /bin/sh -c "echo 'https://mirrors.ustc.edu.cn/alpine/latest-stable/main' > /etc/apk/repositories"
 acbuild --debug run -- /bin/sh -c "echo 'https://mirrors.ustc.edu.cn/alpine/latest-stable/community' >> /etc/apk/repositories"
-acbuild --debug run -- apk update && apk upgrade
+acbuild --debug run -- /bin/sh -c "apk update && apk upgrade"
 
 # 安装编译依赖
 acbuild --debug run -- apk --no-cache --virtual build-dependendencies add make gcc g++ libtool boost-dev build-base openssl-dev openssl git
