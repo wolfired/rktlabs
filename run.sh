@@ -1,6 +1,12 @@
 #!/bin/sh
 set -e
 
+# 检查root权限
+if [ "`id -u`" -ne 0 ]; then
+    echo "This script uses functionality which requires root privileges"
+    exit 1
+fi
+
 RKTLABS_OS=${RKTLABS_OS:-"alpine"}
 
 RKTLABS_APP_NAME=${RKTLABS_APP_NAME:-"playground"}
