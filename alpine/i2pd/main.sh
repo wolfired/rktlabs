@@ -1,10 +1,17 @@
 #!/bin/sh
 set -e
 
-ln -sf ~/certificates ~/external/certificates
+local d=~/.i2pd
+local f=$d/i2pd.conf
 
-if [ -f "~/external/i2pd.conf" ]; then
-    ~/bin/i2pd --datadir ~/external --service false --conf ~/external/i2pd.conf
+if [ ! -d "$d" ]; then
+    mkdir $d
+if
+
+ln -sf $APP_HOME/certificates $d/certificates
+
+if [ -f "$f" ]; then
+    $APP_BIN/i2pd --datadir $d --service false --conf $f
 else
-    ~/bin/i2pd --datadir ~/external --service false
+    $APP_BIN/i2pd --datadir $d --service false
 fi

@@ -18,10 +18,12 @@ APP_USER_ID=${APP_USER_ID:-"8181"}
 APP_GROUP=${APP_GROUP:-"rktlabs"}
 APP_GROUP_ID=${APP_GROUP_ID:-"8181"}
 
-APP_USER_HOME=${APP_USER_HOME:-"/home/$APP_USER"}
-APP_USER_BIN=${APP_USER_BIN:-"$APP_USER_HOME/bin"}
+USER_HOME=${USER_HOME:-"/home/$APP_USER"}
 
-APP_EXTERNAL_DIR=${APP_EXTERNAL_DIR:-"$APP_USER_HOME/external"}
+APP_HOME=${APP_HOME:-"/home/$APP_NAME"}
+APP_BIN=${APP_BIN:-"$APP_HOME/bin"}
+
+APP_BRIDGE=${APP_BRIDGE:-"$USER_HOME"}
 
 REPO_NAME=${REPO_NAME:-""}
 REPO_URL=${REPO_URL:-""}
@@ -38,10 +40,11 @@ trap "{ export EXT=$?; acbuild --debug end && exit $EXT; }" EXIT
 acbuild --debug set-name $APP_ID
 
 #
-acbuild --debug run -- mkdir -p $APP_USER_BIN $APP_EXTERNAL_DIR
+acbuild --debug run -- mkdir -p $USER_HOME $APP_HOME $APP_BIN
 acbuild --debug run -- addgroup -g $APP_GROUP_ID -S $APP_GROUP
-acbuild --debug run -- adduser -u $APP_USER_ID -S -h $APP_USER_HOME -G $APP_GROUP $APP_USER
-acbuild --debug run -- chown -R $APP_USER:$APP_GROUP $APP_USER_HOME
+acbuild --debug run -- adduser -S -h $USER_HOME -G $APP_GROUP -u $APP_USER_ID $APP_USER
+acbuild --debug run -- chown -R $APP_USER:$APP_GROUP $USER_HOME
+acbuild --debug run -- chown -R $APP_USER:$APP_GROUP $APP_HOME
 
 # 更新系统
 acbuild --debug run -- /bin/sh -c "echo 'https://mirrors.ustc.edu.cn/alpine/latest-stable/main' > /etc/apk/repositories"
@@ -58,19 +61,21 @@ acbuild --debug run -- /bin/sh -c "apk update && apk upgrade"
 
 #指定容器运行用户和用户级
 acbuild --debug set-user $APP_USER
-acbuild --debug set-group $APP_USER
+acbuild --debug set-group $APP_GROUP
 
-acbuild --debug mount add external $APP_EXTERNAL_DIR
+acbuild --debug mount add bridge $APP_BRIDGE
 
-acbuild --debug copy ./main.sh $APP_USER_BIN/main.sh
-acbuild --debug run -- chmod a+x $APP_USER_BIN/main.sh
+acbuild --debug copy ./main.sh $APP_BIN/main.sh
+acbuild --debug run -- chmod a+x $APP_BIN/main.sh
 
 acbuild --debug set-user $APP_USER
-acbuild --debug set-working-directory $APP_USER_HOME
+acbuild --debug set-working-directory $APP_HOME
 
-acbuild --debug environment add HOME $APP_EXTERNAL_DIR
-# acbuild --debug set-exec -- $APP_USER_BIN/main.sh
-acbuild --debug set-exec -- /bin/sh -c "if [ ! -f $APP_EXTERNAL_DIR/main.sh ]; then cp $APP_USER_BIN/main.sh $APP_EXTERNAL_DIR/; fi && $APP_EXTERNAL_DIR/main.sh"
+acbuild --debug environment add HOME $APP_BRIDGE
+acbuild --debug environment add APP_HOME $APP_HOME
+acbuild --debug environment add APP_BIN $APP_BIN
+# acbuild --debug set-exec -- $APP_BIN/main.sh
+acbuild --debug set-exec -- /bin/sh -c "if [ ! -f $APP_BRIDGE/main.sh ]; then cp $APP_BIN/main.sh $APP_BRIDGE/; fi && $APP_BRIDGE/main.sh"
 
 # Save the ACI
 acbuild --debug write --overwrite out.aci

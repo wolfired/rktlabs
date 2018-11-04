@@ -9,22 +9,21 @@ fi
 
 RKTLABS_OS=${RKTLABS_OS:-"alpine"}
 
-RKTLABS_APP_NAME=${RKTLABS_APP_NAME:-"playground"}
+RKTLABS_APP=${RKTLABS_APP:-"playground"}
 
-RKTLABS_APP_USER=${RKTLABS_APP_USER:-"rktlabs"}
-RKTLABS_APP_USER_ID=${RKTLABS_APP_USER_ID:-"8181"}
-RKTLABS_APP_GROUP=${RKTLABS_APP_GROUP:-"rktlabs"}
-RKTLABS_APP_GROUP_ID=${RKTLABS_APP_GROUP_ID:-"8181"}
+RKTLABS_USER=${RKTLABS_USER:-"rktlabs"}
+RKTLABS_USER_ID=${RKTLABS_USER_ID:-"8181"}
+RKTLABS_GROUP=${RKTLABS_GROUP:-"rktlabs"}
+RKTLABS_GROUP_ID=${RKTLABS_GROUP_ID:-"8181"}
 
-RKTLABS_APP_USER_HOME=${RKTLABS_APP_USER_HOME:-"/home/$RKTLABS_APP_USER/$RKTLABS_OS/$RKTLABS_APP_NAME"}
-RKTLABS_APP_EXTERNAL_DIR=${RKTLABS_APP_EXTERNAL_DIR:-"$RKTLABS_APP_USER_HOME/external"}
+RKTLABS_APP_HOME=${RKTLABS_APP_HOME:-"/home/$RKTLABS_USER/$RKTLABS_OS/$RKTLABS_APP"}
 
-if [ ! -d "$RKTLABS_APP_EXTERNAL_DIR" ]; then
-    mkdir -p $RKTLABS_APP_EXTERNAL_DIR
-    chown $RKTLABS_APP_USER:$RKTLABS_APP_GROUP $RKTLABS_APP_EXTERNAL_DIR
+if [ ! -d "$RKTLABS_APP_HOME" ]; then
+    mkdir -p $RKTLABS_APP_HOME
+    chown $RKTLABS_USER:$RKTLABS_GROUP $RKTLABS_APP_HOME
 fi
 
-rkt --insecure-options=image run --interactive=true `pwd`/$RKTLABS_OS/$RKTLABS_APP_NAME/out.aci \
---hostname=$RKTLABS_APP_NAME --net=host --dns=223.5.5.5 \
---user=$RKTLABS_APP_USER_ID --group=$RKTLABS_APP_GROUP_ID \
---volume external,kind=host,source=$RKTLABS_APP_EXTERNAL_DIR,readOnly=false
+rkt --insecure-options=image run --interactive=true `pwd`/$RKTLABS_OS/$RKTLABS_APP/out.aci \
+--hostname=$RKTLABS_APP --net=host --dns=223.5.5.5 \
+--user=$RKTLABS_USER_ID --group=$RKTLABS_GROUP_ID \
+--volume bridge,kind=host,source=$RKTLABS_APP_HOME,readOnly=false
