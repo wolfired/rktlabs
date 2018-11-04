@@ -79,6 +79,7 @@ acbuild --debug copy ./main.sh $APP_USER_BIN/main.sh
 acbuild --debug run -- chmod a+x $APP_USER_BIN/main.sh
 
 acbuild --debug set-user $APP_USER
+acbuild --debug set-working-directory $APP_USER_HOME
 
 acbuild --debug environment add APP_USER_HOME $APP_USER_HOME
 acbuild --debug environment add APP_USER_BIN $APP_USER_BIN
