@@ -14,7 +14,9 @@ APP_NAME=${APP_NAME##*/}
 APP_ID=${APP_ID:-"wolfired.com/$APP_NAME"}
 
 APP_USER=${APP_USER:-"rktlabs"}
+APP_USER_ID=${APP_USER_ID:-"8181"}
 APP_GROUP=${APP_GROUP:-"rktlabs"}
+APP_GROUP_ID=${APP_GROUP_ID:-"8181"}
 
 APP_USER_HOME=${APP_USER_HOME:-"/home/$APP_USER"}
 APP_USER_BIN=${APP_USER_BIN:-"$APP_USER_HOME/bin"}
@@ -37,8 +39,8 @@ acbuild --debug set-name $APP_ID
 
 #
 acbuild --debug run -- mkdir -p $APP_USER_BIN $APP_EXTERNAL_DIR
-acbuild --debug run -- addgroup -S $APP_GROUP
-acbuild --debug run -- adduser -S -h $APP_USER_HOME -G $APP_GROUP $APP_USER
+acbuild --debug run -- addgroup -g $APP_GROUP_ID -S $APP_GROUP
+acbuild --debug run -- adduser -u $APP_USER_ID -S -h $APP_USER_HOME -G $APP_GROUP $APP_USER
 acbuild --debug run -- chown -R $APP_USER:$APP_GROUP $APP_USER_HOME
 
 # 更新系统
