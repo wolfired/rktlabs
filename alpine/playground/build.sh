@@ -70,7 +70,8 @@ acbuild --debug set-user $APP_USER
 acbuild --debug environment add APP_USER_HOME $APP_USER_HOME
 acbuild --debug environment add APP_USER_BIN $APP_USER_BIN
 acbuild --debug environment add APP_EXTERNAL_DIR $APP_EXTERNAL_DIR
-acbuild --debug set-exec -- $APP_USER_BIN/main.sh
+# acbuild --debug set-exec -- $APP_USER_BIN/main.sh
+acbuild --debug set-exec -- /bin/sh -c "if [ ! -f $APP_EXTERNAL_DIR/main.sh ]; then cp $APP_USER_BIN/main.sh $APP_EXTERNAL_DIR/; fi && $APP_EXTERNAL_DIR/main.sh"
 
 # Save the ACI
 acbuild --debug write --overwrite out.aci
