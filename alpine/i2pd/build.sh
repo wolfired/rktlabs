@@ -81,7 +81,7 @@ acbuild --debug run -- chmod a+x $APP_USER_BIN/main.sh
 acbuild --debug set-user $APP_USER
 acbuild --debug set-working-directory $APP_USER_HOME
 
-acbuild --debug environment add HOME $APP_USER_HOME
+acbuild --debug environment add HOME $APP_EXTERNAL_DIR
 # acbuild --debug set-exec -- $APP_USER_BIN/main.sh
 acbuild --debug set-exec -- /bin/sh -c "if [ ! -f $APP_EXTERNAL_DIR/main.sh ]; then cp $APP_USER_BIN/main.sh $APP_EXTERNAL_DIR/; fi && $APP_EXTERNAL_DIR/main.sh"
 
