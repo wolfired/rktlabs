@@ -39,12 +39,11 @@ trap "{ export EXT=$?; acbuild --debug end && exit $EXT; }" EXIT
 # 命名ACI
 acbuild --debug set-name $APP_ID
 
-#
+# 创建目录与用户
 acbuild --debug run -- mkdir -p $USER_HOME $APP_HOME $APP_BIN $APP_ROOT
 acbuild --debug run -- addgroup -g $APP_GROUP_ID -S $APP_GROUP
 acbuild --debug run -- adduser -S -h $USER_HOME -G $APP_GROUP -u $APP_USER_ID $APP_USER
 acbuild --debug run -- chown -R $APP_USER:$APP_GROUP $USER_HOME
-acbuild --debug run -- chown -R $APP_USER:$APP_GROUP $APP_HOME
 acbuild --debug run -- chown -R $APP_USER:$APP_GROUP $APP_ROOT
 
 # 更新系统
@@ -81,6 +80,8 @@ acbuild --debug mount add bridge $APP_ROOT
 
 acbuild --debug copy ./main.sh $APP_BIN/main.sh
 acbuild --debug run -- chmod a+x $APP_BIN/main.sh
+
+acbuild --debug run -- chown -R $APP_USER:$APP_GROUP $APP_BIN
 
 acbuild --debug set-user $APP_USER
 acbuild --debug set-working-directory $APP_ROOT
