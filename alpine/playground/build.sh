@@ -44,6 +44,7 @@ acbuild --debug run -- mkdir -p $USER_HOME $APP_HOME $APP_BIN $APP_ROOT
 acbuild --debug run -- addgroup -g $APP_GROUP_ID -S $APP_GROUP
 acbuild --debug run -- adduser -S -h $USER_HOME -G $APP_GROUP -u $APP_USER_ID $APP_USER
 acbuild --debug run -- chown -R $APP_USER:$APP_GROUP $USER_HOME
+acbuild --debug run -- chown -R $APP_USER:$APP_GROUP $APP_HOME
 acbuild --debug run -- chown -R $APP_USER:$APP_GROUP $APP_ROOT
 
 # 更新系统

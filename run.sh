@@ -7,6 +7,9 @@ if [ "`id -u`" -ne 0 ]; then
     exit 1
 fi
 
+RKT_ARGS_DEBUG=${RKT_ARGS_DEBUG:-"false"}
+RKT_ARGS_INTERACTIVE=${RKT_ARGS_INTERACTIVE:-"true"}
+
 RKTLABS_OS=${RKTLABS_OS:-"alpine"}
 
 RKTLABS_APP=${RKTLABS_APP:-"playground"}
@@ -23,7 +26,7 @@ if [ ! -d "$RKTLABS_APP_ROOT" ]; then
     chown $RKTLABS_USER:$RKTLABS_GROUP $RKTLABS_APP_ROOT
 fi
 
-rkt --insecure-options=image run --interactive=true `pwd`/$RKTLABS_OS/$RKTLABS_APP/out.aci \
+rkt --insecure-options=image run --debug=$RKT_ARGS_DEBUG --interactive=$RKT_ARGS_INTERACTIVE `pwd`/$RKTLABS_OS/$RKTLABS_APP/out.aci \
 --hostname=$RKTLABS_APP --net=host --dns=223.5.5.5 \
 --user=$RKTLABS_USER_ID --group=$RKTLABS_GROUP_ID \
 --volume bridge,kind=host,source=$RKTLABS_APP_ROOT,readOnly=false

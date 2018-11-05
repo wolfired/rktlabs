@@ -8,10 +8,9 @@ if [ ! -d "$d" ]; then
     mkdir $d
 fi
 
-if [ !-f "$d/certificates"]; then
+if [ ! -d "$d/certificates" ]; then
     ln -sf $APP_HOME/certificates $d/certificates
 fi
-
 
 if [ -f "$f" ]; then
     $APP_BIN/i2pd --datadir $d --service false --conf $f
