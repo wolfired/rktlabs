@@ -16,14 +16,14 @@ RKTLABS_USER_ID=${RKTLABS_USER_ID:-"8181"}
 RKTLABS_GROUP=${RKTLABS_GROUP:-"rktlabs"}
 RKTLABS_GROUP_ID=${RKTLABS_GROUP_ID:-"8181"}
 
-RKTLABS_APP_HOME=${RKTLABS_APP_HOME:-"/home/$RKTLABS_USER/$RKTLABS_OS/$RKTLABS_APP"}
+RKTLABS_APP_ROOT=${RKTLABS_APP_ROOT:-"/home/$RKTLABS_USER/$RKTLABS_OS/$RKTLABS_APP"}
 
-if [ ! -d "$RKTLABS_APP_HOME" ]; then
-    mkdir -p $RKTLABS_APP_HOME
-    chown $RKTLABS_USER:$RKTLABS_GROUP $RKTLABS_APP_HOME
+if [ ! -d "$RKTLABS_APP_ROOT" ]; then
+    mkdir -p $RKTLABS_APP_ROOT
+    chown $RKTLABS_USER:$RKTLABS_GROUP $RKTLABS_APP_ROOT
 fi
 
 rkt --insecure-options=image run --interactive=true `pwd`/$RKTLABS_OS/$RKTLABS_APP/out.aci \
 --hostname=$RKTLABS_APP --net=host --dns=223.5.5.5 \
 --user=$RKTLABS_USER_ID --group=$RKTLABS_GROUP_ID \
---volume bridge,kind=host,source=$RKTLABS_APP_HOME,readOnly=false
+--volume bridge,kind=host,source=$RKTLABS_APP_ROOT,readOnly=false
