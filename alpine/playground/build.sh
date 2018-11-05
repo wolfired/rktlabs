@@ -72,7 +72,7 @@ acbuild --debug run -- chown -R $APP_USER:$APP_GROUP $USER_HOME
 acbuild --debug run -- chown -R $APP_USER:$APP_GROUP $APP_ROOT
 
 acbuild --debug set-user $APP_USER
-acbuild --debug set-working-directory $APP_ROOT
+# acbuild --debug set-working-directory $APP_ROOT
 
 acbuild --debug environment add APP_HOME $APP_HOME
 acbuild --debug environment add APP_BIN $APP_BIN
