@@ -81,7 +81,8 @@ acbuild --debug mount add bridge $APP_ROOT
 acbuild --debug copy ./main.sh $APP_BIN/main.sh
 acbuild --debug run -- chmod a+x $APP_BIN/main.sh
 
-acbuild --debug run -- chown -R $APP_USER:$APP_GROUP $APP_BIN
+acbuild --debug run -- chown -R $APP_USER:$APP_GROUP $USER_HOME
+acbuild --debug run -- chown -R $APP_USER:$APP_GROUP $APP_ROOT
 
 acbuild --debug set-user $APP_USER
 acbuild --debug set-working-directory $APP_ROOT
