@@ -1,4 +1,6 @@
 #!/bin/sh
 set -e
 
-touch ~/hello
+pwd
+id
+ls -al
