@@ -1,4 +1,9 @@
 #!/bin/sh
 set -e
 
-$APP_BIN/i2pd --datadir $APP_BRIDGE/.i2pd --service false --conf $APP_BRIDGE/.i2pd/i2pd.conf
+COMMAND=/usr/local/bin/i2pd
+
+mkdir -p ~/.i2pd
+cp -R -u /i2pd/certificates ~/.i2pd
+
+$COMMAND --service false --datadir ~/.i2pd --conf ~/.i2pd/i2pd.conf

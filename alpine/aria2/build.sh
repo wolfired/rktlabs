@@ -9,5 +9,6 @@
 # 安装运行依赖
 
 # 安装
+acbuild ${ACBUILD_ARGS_DEBUG} run -- apk add aria2
 
 . $OS_PATH/acbuild_footer.sh
