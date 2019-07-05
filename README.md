@@ -27,7 +27,7 @@ sudo RKT_ARGS_DEBUG=false RKT_ARGS_DAEMON=false RKTLABS_OS=alpine RKTLABS_APP=i2
 sudo ACBUILD_ARGS_DEBUG=false RKTLABS_OS=alpine RKTLABS_APP=playground ./build.sh
 
 # Boot
-sudo RKT_ARGS_DEBUG=false RKT_ARGS_DAEMON=false RKTLABS_OS=alpine RKTLABS_APP=i2pd ./boot.sh
+sudo RKT_ARGS_DEBUG=false RKT_ARGS_DAEMON=false RKTLABS_OS=alpine RKTLABS_APP=playground ./boot.sh
 ```
 
 # Ubuntu
