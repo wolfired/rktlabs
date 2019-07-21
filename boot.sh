@@ -47,6 +47,6 @@ fi
 $daemon rkt --insecure-options=image run --debug=${RKT_ARGS_DEBUG} --interactive=${RKT_ARGS_INTERACTIVE} ${RKTLABS_ROOT}/${RKTLABS_OS}/${RKTLABS_APP}/out.aci \
 --set-env HOME=/home/${RKTLABS_USER} \
 --hostname=${RKTLABS_APP} --net=host --dns=223.5.5.5 \
---user=${RKTLABS_USER_ID} --group=${RKTLABS_GROUP_ID} \
+--user=0 --group=0 \
 --seccomp=mode=retain,@rkt/default-whitelist,errno=EPERM \
 --volume home,kind=host,source=${RKTLABS_USER_HOME},readOnly=false

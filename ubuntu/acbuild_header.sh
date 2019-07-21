@@ -1,9 +1,3 @@
-# 检查root权限
-if [ "`id -u`" -ne 0 ]; then
-    echo "This script uses functionality which requires root privileges"
-    exit 1
-fi
-
 APP_NAME=${APP_PATH##*/}
 APP_ID=${APP_ID:-"wolfired.com/$APP_NAME"}
 
@@ -32,10 +26,10 @@ acbuild ${ACBUILD_ARGS_DEBUG} run -- groupadd -r -g $APP_GROUP_ID $APP_GROUP
 acbuild ${ACBUILD_ARGS_DEBUG} run -- useradd -r -d $USER_HOME -g $APP_GROUP -u $APP_USER_ID $APP_USER
 acbuild ${ACBUILD_ARGS_DEBUG} run -- chown -R $APP_USER:$APP_GROUP $USER_HOME
 
-# # 更新系统
-# acbuild ${ACBUILD_ARGS_DEBUG} run -- /bin/sh -c "echo 'https://mirrors.huaweicloud.com/alpine/latest-stable/main' > /etc/apk/repositories"
-# acbuild ${ACBUILD_ARGS_DEBUG} run -- /bin/sh -c "echo 'https://mirrors.huaweicloud.com/alpine/latest-stable/community' >> /etc/apk/repositories"
-# acbuild ${ACBUILD_ARGS_DEBUG} run -- /bin/sh -c "apk update && apk upgrade"
+# 更新系统
+acbuild ${ACBUILD_ARGS_DEBUG} run -- sed -i "s@http://.*archive.ubuntu.com@http://mirrors.huaweicloud.com@g" /etc/apt/sources.list
+acbuild ${ACBUILD_ARGS_DEBUG} run -- sed -i "s@http://.*security.ubuntu.com@http://mirrors.huaweicloud.com@g" /etc/apt/sources.list
+acbuild ${ACBUILD_ARGS_DEBUG} run -- apt-get -y update && apt-get -y upgrade
 
 # # 设置系统时间
 # acbuild ${ACBUILD_ARGS_DEBUG} run -- apk add tzdata

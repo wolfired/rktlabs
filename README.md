@@ -1,5 +1,15 @@
 # Alpine
 
+## playground
+
+```sh
+# Build
+sudo ACBUILD_ARGS_DEBUG=false RKTLABS_OS=alpine RKTLABS_APP=playground ./build.sh
+
+# Boot
+sudo RKT_ARGS_DEBUG=false RKT_ARGS_DAEMON=false RKTLABS_OS=alpine RKTLABS_APP=playground ./boot.sh
+```
+
 ## aria2
 
 ```sh
@@ -20,17 +30,17 @@ sudo ACBUILD_ARGS_DEBUG=false RKTLABS_OS=alpine RKTLABS_APP=i2pd ./build.sh
 sudo RKT_ARGS_DEBUG=false RKT_ARGS_DAEMON=false RKTLABS_OS=alpine RKTLABS_APP=i2pd ./boot.sh
 ```
 
+# Ubuntu
+
 ## playground
 
 ```sh
 # Build
-sudo ACBUILD_ARGS_DEBUG=false RKTLABS_OS=alpine RKTLABS_APP=playground ./build.sh
+sudo ACBUILD_ARGS_DEBUG=false RKTLABS_OS=ubuntu RKTLABS_APP=playground ./build.sh
 
 # Boot
-sudo RKT_ARGS_DEBUG=false RKT_ARGS_DAEMON=false RKTLABS_OS=alpine RKTLABS_APP=playground ./boot.sh
+sudo RKT_ARGS_DEBUG=false RKT_ARGS_DAEMON=false RKTLABS_OS=ubuntu RKTLABS_APP=playground ./boot.sh
 ```
-
-# Ubuntu
 
 ## btsync
 
@@ -50,4 +60,14 @@ sudo ACBUILD_ARGS_DEBUG=false RKTLABS_OS=ubuntu RKTLABS_APP=rslsync ./build.sh
 
 # Boot
 sudo RKT_ARGS_DEBUG=false RKT_ARGS_DAEMON=false RKTLABS_OS=ubuntu RKTLABS_APP=rslsync ./boot.sh
+```
+
+## transmission
+
+```sh
+# Build
+sudo ACBUILD_ARGS_DEBUG=false RKTLABS_OS=ubuntu RKTLABS_APP=transmission ./build.sh
+
+# Boot
+sudo RKT_ARGS_DEBUG=false RKT_ARGS_DAEMON=false RKTLABS_OS=ubuntu RKTLABS_APP=transmission ./boot.sh
 ```
