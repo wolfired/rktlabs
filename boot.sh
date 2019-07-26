@@ -38,7 +38,6 @@ cp -u ${APP_MAIN_SH} $RKTLABS_USER_HOME/${RKTLABS_APP}.sh
 chmod 754 $RKTLABS_USER_HOME/${RKTLABS_APP}.sh
 chown -R ${RKTLABS_USER}:${RKTLABS_GROUP} ${RKTLABS_USER_HOME}
 
-#systemd-run --slice=machine
 daemon=
 if [ "true" = ${RKT_ARGS_DAEMON} ]; then
     daemon="systemd-run --slice=machine"

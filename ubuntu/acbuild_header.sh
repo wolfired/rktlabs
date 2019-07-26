@@ -29,7 +29,8 @@ acbuild ${ACBUILD_ARGS_DEBUG} run -- chown -R $APP_USER:$APP_GROUP $USER_HOME
 # 更新系统
 acbuild ${ACBUILD_ARGS_DEBUG} run -- sed -i "s@http://.*archive.ubuntu.com@http://mirrors.huaweicloud.com@g" /etc/apt/sources.list
 acbuild ${ACBUILD_ARGS_DEBUG} run -- sed -i "s@http://.*security.ubuntu.com@http://mirrors.huaweicloud.com@g" /etc/apt/sources.list
-acbuild ${ACBUILD_ARGS_DEBUG} run -- apt-get -y update && apt-get -y upgrade
+acbuild ${ACBUILD_ARGS_DEBUG} run -- apt-get -y update
+acbuild ${ACBUILD_ARGS_DEBUG} run -- apt-get -y upgrade
 
 # # 设置系统时间
 # acbuild ${ACBUILD_ARGS_DEBUG} run -- apk add tzdata

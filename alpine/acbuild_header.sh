@@ -28,7 +28,8 @@ acbuild ${ACBUILD_ARGS_DEBUG} run -- chown -R $APP_USER:$APP_GROUP $USER_HOME
 
 # 更新系统
 acbuild ${ACBUILD_ARGS_DEBUG} run -- sed -i "s@http://dl-cdn.alpinelinux.org/@https://mirrors.huaweicloud.com/@g" /etc/apk/repositories
-acbuild ${ACBUILD_ARGS_DEBUG} run -- apk update && apk upgrade
+acbuild ${ACBUILD_ARGS_DEBUG} run -- apk update
+acbuild ${ACBUILD_ARGS_DEBUG} run -- apk upgrade
 
 # 设置系统时间
 acbuild ${ACBUILD_ARGS_DEBUG} run -- apk add tzdata
