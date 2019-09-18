@@ -1,4 +1,23 @@
-#!/bin/sh
+if [ '-h' == "$1" ] || [ '--help' == "$1" ]; then
+    echo "Usage:"
+    echo "  sudo [options] ./build.sh"
+    echo ""
+    #
+    echo "Options:"
+    echo "  rktlabs_os=?"
+    echo "      ? = \"alpine\" | \"ubuntu\" | \"archlinux\""
+    echo "      skip is \"alpine\""
+    echo "  rktlabs_app=?"
+    echo "      if rktlabs_os is \"alpine\", ? = \"aria2\" | \"i2pd\" | \"playground\" | \"rutorrent\""
+    echo "      if rktlabs_os is \"ubuntu\", ? = \"btsync\" | \"playground\" | \"rslsync\" | \"transmission\""
+    echo "      if rktlabs_os is \"archlinux\", ? = \"playground\""
+    echo "      skip is \"playground\""
+    echo "  acbuild_args_debug=?"
+    echo "      ? = true | false, skip is false"
+    #
+    exit 0
+fi
+
 set -e
 
 # 检查root权限
@@ -9,10 +28,10 @@ fi
 
 RKTLABS_ROOT=`pwd`
 
-RKTLABS_OS=${RKTLABS_OS:-"alpine"}
-RKTLABS_APP=${RKTLABS_APP:-"playground"}
+RKTLABS_OS=${rktlabs_os:-"alpine"}
+RKTLABS_APP=${rktlabs_app:-"playground"}
 
-ACBUILD_ARGS_DEBUG=${ACBUILD_ARGS_DEBUG:-"false"}
+ACBUILD_ARGS_DEBUG=${acbuild_args_debug:-"false"}
 
 if [ "true" = ${ACBUILD_ARGS_DEBUG} ]; then
     ACBUILD_ARGS_DEBUG="--debug"

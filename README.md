@@ -4,30 +4,30 @@
 
 ```sh
 # Build
-sudo ACBUILD_ARGS_DEBUG=false RKTLABS_OS=alpine RKTLABS_APP=playground ./build.sh
+sudo acbuild_args_debug=false rktlabs_os=alpine rktlabs_app=playground ./build.sh
 
 # Boot
-sudo RKT_ARGS_DEBUG=false RKT_ARGS_DAEMON=false RKTLABS_OS=alpine RKTLABS_APP=playground ./boot.sh
+sudo rkt_args_debug=false rkt_args_daemon=false rktlabs_os=alpine rktlabs_app=playground ./boot.sh
 ```
 
 ## aria2
 
 ```sh
 # Build
-sudo ACBUILD_ARGS_DEBUG=false RKTLABS_OS=alpine RKTLABS_APP=aria2 ./build.sh
+sudo acbuild_args_debug=false rktlabs_os=alpine rktlabs_app=aria2 ./build.sh
 
 # Boot
-sudo RKT_ARGS_DEBUG=false RKT_ARGS_DAEMON=false RKTLABS_OS=alpine RKTLABS_APP=aria2 ./boot.sh
+sudo rkt_args_debug=false rkt_args_daemon=false rktlabs_os=alpine rktlabs_app=aria2 ./boot.sh
 ```
 
 ## i2pd
 
 ```sh
 # Build
-sudo ACBUILD_ARGS_DEBUG=false RKTLABS_OS=alpine RKTLABS_APP=i2pd ./build.sh
+sudo acbuild_args_debug=false rktlabs_os=alpine rktlabs_app=i2pd ./build.sh
 
 # Boot
-sudo RKT_ARGS_DEBUG=false RKT_ARGS_DAEMON=false RKTLABS_OS=alpine RKTLABS_APP=i2pd ./boot.sh
+sudo rkt_args_debug=false rkt_args_daemon=false rktlabs_os=alpine rktlabs_app=i2pd ./boot.sh
 ```
 
 # Ubuntu
@@ -36,38 +36,44 @@ sudo RKT_ARGS_DEBUG=false RKT_ARGS_DAEMON=false RKTLABS_OS=alpine RKTLABS_APP=i2
 
 ```sh
 # Build
-sudo ACBUILD_ARGS_DEBUG=false RKTLABS_OS=ubuntu RKTLABS_APP=playground ./build.sh
+sudo acbuild_args_debug=false rktlabs_os=ubuntu rktlabs_app=playground ./build.sh
 
 # Boot
-sudo RKT_ARGS_DEBUG=false RKT_ARGS_DAEMON=false RKTLABS_OS=ubuntu RKTLABS_APP=playground ./boot.sh
+sudo rkt_args_debug=false rkt_args_daemon=false rktlabs_os=ubuntu rktlabs_app=playground ./boot.sh
 ```
 
 ## btsync
 
 ```sh
 # Build
-sudo ACBUILD_ARGS_DEBUG=false RKTLABS_OS=ubuntu RKTLABS_APP=btsync ./build.sh
+sudo acbuild_args_debug=false rktlabs_os=ubuntu rktlabs_app=btsync ./build.sh
 
 # Boot
-sudo RKT_ARGS_DEBUG=false RKT_ARGS_DAEMON=false RKTLABS_OS=ubuntu RKTLABS_APP=btsync ./boot.sh
+sudo rkt_args_debug=false rkt_args_daemon=false rktlabs_os=ubuntu rktlabs_app=btsync ./boot.sh
 ```
 
 ## rslsync
 
 ```sh
 # Build
-sudo ACBUILD_ARGS_DEBUG=false RKTLABS_OS=ubuntu RKTLABS_APP=rslsync ./build.sh
+sudo acbuild_args_debug=false rktlabs_os=ubuntu rktlabs_app=rslsync ./build.sh
 
 # Boot
-sudo RKT_ARGS_DEBUG=false RKT_ARGS_DAEMON=false RKTLABS_OS=ubuntu RKTLABS_APP=rslsync ./boot.sh
+sudo rkt_args_debug=false rkt_args_daemon=false rktlabs_os=ubuntu rktlabs_app=rslsync ./boot.sh
 ```
 
 ## transmission
 
 ```sh
 # Build
-sudo ACBUILD_ARGS_DEBUG=false RKTLABS_OS=ubuntu RKTLABS_APP=transmission ./build.sh
+sudo acbuild_args_debug=false rktlabs_os=ubuntu rktlabs_app=transmission ./build.sh
 
 # Boot
-sudo RKT_ARGS_DEBUG=false RKT_ARGS_DAEMON=false RKTLABS_OS=ubuntu RKTLABS_APP=transmission ./boot.sh
+sudo rkt_args_debug=false rkt_args_daemon=false rktlabs_os=ubuntu rktlabs_app=transmission ./boot.sh
+```
+
+# Kill running rkt
+
+```
+Ctrl + ]]]
 ```
