@@ -10,7 +10,7 @@ if [ '-h' == "$1" ] || [ '--help' == "$1" ]; then
     echo "  rktlabs_app=?"
     echo "      if rktlabs_os is \"alpine\", ? = \"aria2\" | \"i2pd\" | \"playground\" | \"rutorrent\""
     echo "      if rktlabs_os is \"ubuntu\", ? = \"btsync\" | \"playground\" | \"rslsync\" | \"transmission\""
-    echo "      if rktlabs_os is \"archlinux\", ? = \"playground\""
+    echo "      if rktlabs_os is \"archlinux\", ? = \"ipfs\" | \"playground\""
     echo "      skip is \"playground\""
     echo "  acbuild_args_debug=?"
     echo "      ? = true | false, skip is false"
